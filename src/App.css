@@ -1,6 +1,6 @@
 /* Styling dasar untuk seluruh halaman */
 body {
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #333;
   display: flex;
@@ -8,56 +8,363 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
+}
+
+/* Background particles animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 90% 40%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+  background-size: 100px 100px, 80px 80px, 120px 120px, 90px 90px;
+  animation: floatingParticles 20s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes floatingParticles {
+  0% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-100px) translateX(50px); }
+  66% { transform: translateY(-200px) translateX(-50px); }
+  100% { transform: translateY(-300px) translateX(0px); }
 }
 
 /* Wadah untuk login dan halaman utama */
 .login-container, .main-container {
-  background-color: white;
-  padding: 2rem 3rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem 3rem;
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
   text-align: center;
   width: 90%;
   max-width: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-container::before,
+.main-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffecd2);
+  background-size: 300% 100%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Styling untuk input dan button */
 input[type="password"] {
   width: 80%;
-  padding: 0.75rem;
-  margin-top: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
 }
 
 button {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  margin: 1rem 0.5rem;
-  transition: background-color 0.3s ease;
+  margin: 1.5rem 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 button:hover {
-  background-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
 
+button:active {
+  transform: translateY(-1px);
+}
+
+/* Gift Box Styling */
+.gift-box {
+  font-size: 5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 2rem;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.gift-box:hover {
+  transform: scale(1.2) rotateZ(10deg);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+}
+
+/* Message Box */
+.message-box {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 2rem 0;
+  box-shadow: 0 10px 30px rgba(255, 154, 158, 0.3);
+  position: relative;
+}
+
+.message-box::before {
+  content: '💝';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  background: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.message-box h2 {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.message-box p {
+  color: #fff;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Gallery Styles */
+.gallery-page {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-page h2 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.gallery-page h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Carousel Enhancements */
+.carousel-root {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.carousel .slide img {
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.carousel .slide:hover img {
+  transform: scale(1.02);
+}
+
+.carousel .control-dots .dot {
+  background: rgba(102, 126, 234, 0.3) !important;
+  box-shadow: none !important;
+  border-radius: 50% !important;
+  width: 12px !important;
+  height: 12px !important;
+  margin: 0 8px !important;
+}
+
+.carousel .control-dots .dot.selected {
+  background: #667eea !important;
+}
+
+/* Final Surprise */
+.final-surprise {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  padding: 2rem;
+  border-radius: 20px;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-surprise::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.final-surprise h3 {
+  color: #333;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.final-surprise p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Error Message */
 .error-message {
-  color: #d93025;
+  color: #e74c3c;
   margin-top: 1rem;
+  padding: 0.8rem;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #e74c3c;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 .clue {
   font-style: italic;
-  color: #666;
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  border-left: 4px solid #667eea;
 }
-
 
 .hidden {
   display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container, .main-container {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  
+  .gift-box {
+    font-size: 4rem;
+  }
+  
+  input[type="password"] {
+    width: 85%;
+  }
+  
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Loading Animation */
+.loading-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #667eea;
+  animation: loadingDots 1.4s infinite ease-in --out both;
+}
+
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes loadingDots {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+  40% { transform: scale(1.2); opacity: 1; }
 }
