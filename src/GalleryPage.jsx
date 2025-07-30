@@ -6,34 +6,28 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Dummy foto untuk demonstrasi - ganti dengan path foto yang benar
 const photos = [
   {
-    src: 'C:/Users/Ghalbi/ultah-uti/src/assets/foto1.jpg', // Sesuaikan dengan lokasi foto Anda
-    caption: 'Foto bareng kita yang ga sengaja 💕',
-    date: 'Januari 2024'
+    src: './assets/foto1.jpg', // Sesuaikan dengan lokasi foto Anda
+    caption: 'Foto bareng kita yang ga sengaja💕'
   },
   {
-    src: '/assets/foto2.jpg',
-    caption: 'Saat kita jalan-jalan ke pantai, kamu cantik banget di foto ini 🌊',
-    date: 'Februari 2024'
+    src: './assets/foto2.jpg',
+    caption: 'selfie pertama kita?? 🌊'
   },
   {
-    src: '/assets/foto3.jpg',
-    caption: 'Nonton konser bareng, kamu excited banget waktu itu 🎵',
-    date: 'Maret 2024'
+    src: './assets/foto3.jpg',
+    caption: 'pakyuuu meennn'
   },
   {
-    src: '/assets/foto4.jpg',
-    caption: 'Makan bareng di resto favorit kita, selalu seru! 🍽️',
-    date: 'April 2024'
+    src: './assets/foto4.jpg',
+    caption: 'ini lucu banget????'
   },
   {
-    src: '/assets/foto5.jpg',
-    caption: 'Foto selfie kita yang paling lucu, kamu ketawa terus 😄',
-    date: 'Mei 2024'
+    src: './assets/foto5.jpg',
+    caption: 'ini foto favorit aku'
   },
   {
-    src: '/assets/foto6.jpg',
-    caption: 'Momen terakhir yang diabadikan, tapi bukan yang terakhir untuk kita ❤️',
-    date: 'Juni 2024'
+    src: './assets/foto6.jpg',
+    caption: 'ini foto muka km yang pertama ada di hp aku wkwkwk'
   }
 ];
 
