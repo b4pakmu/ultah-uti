@@ -3,31 +3,39 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Dummy foto untuk demonstrasi - ganti dengan path foto yang benar
+// Import foto langsung dari src/assets
+import foto1 from './assets/foto1.jpg';
+import foto2 from './assets/foto2.jpg';
+import foto3 from './assets/foto3.jpg';
+import foto4 from './assets/foto4.jpg';
+import foto5 from './assets/foto5.jpg';
+import foto6 from './assets/foto6.jpg';
+
+// Array foto dengan import
 const photos = [
   {
-    src: './assets/foto1.jpg', // Sesuaikan dengan lokasi foto Anda
-    caption: 'Foto bareng kita yang ga sengaja💕'
+    src: foto1,
+    caption: 'foto pertama kita berdua yang ga sengaja💕'
   },
   {
-    src: './assets/foto2.jpg',
-    caption: 'selfie pertama kita?? 🌊'
+    src: foto2,
+    caption: 'foto selfie pertama kita??🌊'
   },
   {
-    src: './assets/foto3.jpg',
-    caption: 'pakyuuu meennn'
+    src: foto3,
+    caption: 'PAKYU MEEENNNN🎵'
   },
   {
-    src: './assets/foto4.jpg',
-    caption: 'ini lucu banget????'
+    src: foto4,
+    caption: 'ini lucu jd ak masukin??'  
   },
   {
-    src: './assets/foto5.jpg',
-    caption: 'ini foto favorit aku'
+    src: foto5,
+    caption: 'INI FOTO FAVORIT AKUUUU'
   },
   {
-    src: './assets/foto6.jpg',
-    caption: 'ini foto muka km yang pertama ada di hp aku wkwkwk'
+    src: foto6,
+    caption: 'ini foto pertama km yang ada di hp akuuu'
   }
 ];
 
