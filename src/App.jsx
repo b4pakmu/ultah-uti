@@ -25,31 +25,38 @@ function App() {
         alignItems: 'center',
         minHeight: '100vh',
         width: '100%',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        padding: '1rem'
       }}>
         <div style={{
           textAlign: 'center',
           background: 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(10px)',
-          padding: '3rem',
+          padding: 'clamp(2rem, 6vw, 3rem)',
           borderRadius: '20px',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)'
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+          maxWidth: '90%'
         }}>
           <div style={{
-            fontSize: '4rem',
+            fontSize: 'clamp(3rem, 10vw, 4rem)',
             marginBottom: '1rem',
             animation: 'rotate 2s linear infinite'
           }}>
             🎁
           </div>
-          <h2 style={{ color: '#667eea', marginBottom: '2rem', fontSize: '1.5rem' }}>
+          <h2 style={{ 
+            color: '#667eea', 
+            marginBottom: '2rem', 
+            fontSize: 'clamp(1.2rem, 4vw, 1.5rem)',
+            lineHeight: '1.3'
+          }}>
             Menyiapkan Kejutan...
           </h2>
-          <div className="loading-dots" style={{ display: 'inline-flex', gap: '4px' }}>
+          <div style={{ display: 'inline-flex', gap: '4px' }}>
             {[0, 0.2, 0.4].map((delay, i) => (
               <span key={i} style={{
-                width: '8px',
-                height: '8px',
+                width: 'clamp(6px, 2vw, 8px)',
+                height: 'clamp(6px, 2vw, 8px)',
                 borderRadius: '50%',
                 background: '#667eea',
                 animation: `loadingDots 1.4s infinite ease-in-out both ${delay}s`
@@ -89,7 +96,7 @@ function App() {
           zIndex: -1
         }} />
 
-        {/* Halaman Utama */}
+        {/* Main Content */}
         {!isAuthenticated ? (
           <LoginScreen onLoginSuccess={handleLogin} />
         ) : (

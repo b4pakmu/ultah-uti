@@ -67,12 +67,14 @@ const Typewriter = ({
       <span
         className="typewriter-text"
         style={{
-          fontSize: '2.2rem',
+          fontSize: 'clamp(1.2rem, 4vw, 2.2rem)',
           fontWeight: '700',
           color: '#7b3fa1',
           fontFamily: `'Segoe UI', Roboto, sans-serif`,
           letterSpacing: '1px',
-          textAlign: 'center'
+          textAlign: 'center',
+          display: 'block',
+          lineHeight: '1.3'
         }}
       >
         {currentText}
@@ -83,7 +85,7 @@ const Typewriter = ({
           style={{
             animation: 'blink 0.8s infinite alternate',
             fontWeight: 100,
-            fontSize: '1.5rem',
+            fontSize: 'clamp(1rem, 3vw, 1.5rem)',
             color: '#7b3fa1'
           }}
         >

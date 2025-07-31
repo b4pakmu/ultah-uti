@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Typewriter from './Typewriter';
 
 const PASSWORDS = {
@@ -20,12 +20,12 @@ const LoginScreen = ({ onLoginSuccess }) => {
   const [isShaking, setIsShaking] = useState(false);
 
   const welcomeTexts = [
-    "Halo Utiii 👋",
+    "Halo Utiii",
     "Selamat ulang tahun ya!!",
     "Karena kamu gabolehin aku untuk ngasih kado",
     "Jadi aku bikin ini untuk kamu💖",
-    "Nah, pertama aku mau ngasih km tantangan dulu",
-    "Silahkan menikmati."
+    "Nah, pertama aku mau ngasih km tantangan dulu :P",
+    "ENJOOOYY"
   ];
 
   const handleSubmit = (e) => {
@@ -59,17 +59,17 @@ const LoginScreen = ({ onLoginSuccess }) => {
         top: 0, left: 0, width: '100%', height: '100%',
         pointerEvents: 'none', zIndex: 0
       }}>
-        {[...Array(15)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <div key={i} style={{
             position: 'absolute',
-            fontSize: `${1 + Math.random() * 1.5}rem`,
+            fontSize: `${0.8 + Math.random() * 1}rem`,
             opacity: 0.15,
             color: '#fff',
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             animation: `float ${Math.random() * 20 + 20}s linear infinite`
           }}>
-            {['🎈','🎂','🎁','💖','🌟','✨','🎉','💕','🎊','🍰','🎀','💝','🦄','🌈','⭐'][i]}
+            {['🎈','🎂','🎁','💖','🌟','✨','🎉','💕','🎊','🍰','🎀','💝'][i]}
           </div>
         ))}
       </div>
@@ -79,10 +79,10 @@ const LoginScreen = ({ onLoginSuccess }) => {
         zIndex: 1,
         background: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(10px)',
-        padding: '2.5rem 3rem',
+        padding: 'clamp(1.5rem, 5vw, 3rem)',
         borderRadius: '20px',
         boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
-        width: '90%',
+        width: '100%',
         maxWidth: '500px',
         textAlign: 'center',
         transform: isShaking ? 'translateX(-10px)' : 'translateX(0)',
@@ -96,29 +96,25 @@ const LoginScreen = ({ onLoginSuccess }) => {
             pauseDuration={1500}
             onComplete={() => setIsTypewriterComplete(true)}
             style={{
-              fontSize: '1.8rem',
-              fontWeight: '700',
-              textAlign: 'center',
-              background: 'linear-gradient(135deg, #667eea, #764ba2)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              marginBottom: '1.5rem',
-              minHeight: '100px'
+              marginBottom: '2rem',
+              minHeight: 'clamp(80px, 15vw, 120px)'
             }}
           />
         ) : (
           <>
             <h1 style={{
-              fontSize: '2rem',
-              color: '#764ba2',
+              fontSize: 'clamp(1.3rem, 5vw, 2rem)',
+              color: '#ff6b6b',
               marginBottom: '1rem',
-              fontWeight: 'bold'
-            }}>🔐 Tantangan Dimulai! 🔐</h1>
+              fontWeight: 'bold',
+              lineHeight: '1.2'
+            }}>GASKEENNN</h1>
 
             <p style={{
               color: '#555',
               marginBottom: '1.5rem',
-              fontSize: '1rem'
+              fontSize: 'clamp(0.9rem, 3vw, 1rem)',
+              lineHeight: '1.4'
             }}>
               Cluenya makanan favorit kamuu... 🍯
             </p>
@@ -134,11 +130,21 @@ const LoginScreen = ({ onLoginSuccess }) => {
                 }}
                 style={{
                   width: '100%',
-                  padding: '1rem',
-                  fontSize: '1.1rem',
+                  padding: 'clamp(0.75rem, 3vw, 1rem)',
+                  fontSize: 'clamp(0.9rem, 3vw, 1.1rem)',
                   borderRadius: '10px',
                   border: '2px solid #ccc',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  boxSizing: 'border-box',
+                  transition: 'border-color 0.3s ease'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#ff6b6b';
+                  e.target.style.boxShadow = '0 0 0 3px rgba(102, 126, 234, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#ccc';
+                  e.target.style.boxShadow = 'none';
                 }}
               />
               <button
@@ -146,14 +152,27 @@ const LoginScreen = ({ onLoginSuccess }) => {
                 disabled={!password.trim()}
                 style={{
                   marginTop: '1.5rem',
-                  padding: '1rem 2rem',
-                  background: '#764ba2',
+                  padding: 'clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem)',
+                  background: password.trim() ? '#764ba2' : '#ccc',
                   color: 'white',
                   border: 'none',
                   borderRadius: '50px',
-                  fontSize: '1.1rem',
+                  fontSize: 'clamp(0.9rem, 3vw, 1.1rem)',
                   fontWeight: 'bold',
-                  cursor: password.trim() ? 'pointer' : 'not-allowed'
+                  cursor: password.trim() ? 'pointer' : 'not-allowed',
+                  width: '100%',
+                  maxWidth: '300px',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  if (password.trim()) {
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = 'none';
                 }}
               >
                 ✨ Buka Pesan ✨
@@ -161,7 +180,34 @@ const LoginScreen = ({ onLoginSuccess }) => {
             </form>
 
             {error && (
-              <p style={{ color: '#e74c3c', marginTop: '1rem' }}>{error}</p>
+              <div style={{
+                marginTop: '1.5rem',
+                padding: '1rem',
+                background: 'rgba(231, 76, 60, 0.1)',
+                borderRadius: '10px',
+                border: '1px solid rgba(231, 76, 60, 0.2)'
+              }}>
+                <p style={{ 
+                  color: '#ff6b6b', 
+                  margin: 0,
+                  fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
+                  lineHeight: '1.3',
+                  fontWeight: '500'
+                }}>
+                  💡 {error}
+                </p>
+              </div>
+            )}
+
+            {attempts > 0 && (
+              <div style={{
+                marginTop: '1rem',
+                fontSize: 'clamp(0.7rem, 2vw, 0.8rem)',
+                color: '#666',
+                fontStyle: 'italic'
+              }}>
+                Percobaan ke-{attempts} dari {PASSWORDS.HINTS.length}
+              </div>
             )}
           </>
         )}

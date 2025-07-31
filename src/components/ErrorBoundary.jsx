@@ -23,20 +23,39 @@ class ErrorBoundary extends React.Component {
           justifyContent: 'center',
           alignItems: 'center',
           minHeight: '100vh',
-          padding: '2rem'
+          padding: '1rem'
         }}>
           <div style={{
             textAlign: 'center',
             background: 'rgba(255, 255, 255, 0.95)',
-            padding: '3rem',
+            padding: 'clamp(2rem, 6vw, 3rem)',
             borderRadius: '20px',
             boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
-            maxWidth: '500px'
+            maxWidth: '90%'
           }}>
-            <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>😢</div>
-            <h2>Oops! Ada yang tidak beres...</h2>
-            <p>Maaf, sepertinya ada masalah teknis dengan aplikasi ini.</p>
-            <p>Tapi jangan khawatir, cinta kita tetap sempurna! 💕</p>
+            <div style={{ fontSize: 'clamp(3rem, 8vw, 4rem)', marginBottom: '1rem' }}>😢</div>
+            <h2 style={{ 
+              fontSize: 'clamp(1.3rem, 4vw, 1.8rem)', 
+              marginBottom: '1rem',
+              color: '#333',
+              lineHeight: '1.2'
+            }}>
+              Oops! Ada yang tidak beres...
+            </h2>
+            <p style={{ 
+              marginBottom: '0.5rem',
+              fontSize: 'clamp(0.9rem, 3vw, 1rem)',
+              color: '#666'
+            }}>
+              Maaf, sepertinya ada masalah teknis dengan aplikasi ini.
+            </p>
+            <p style={{ 
+              marginBottom: '2rem',
+              fontSize: 'clamp(0.9rem, 3vw, 1rem)',
+              color: '#666'
+            }}>
+              Tapi jangan khawatir, cinta kita tetap sempurna! 💕
+            </p>
 
             <button
               onClick={() => window.location.reload()}
@@ -44,12 +63,12 @@ class ErrorBoundary extends React.Component {
                 background: '#667eea',
                 color: 'white',
                 border: 'none',
-                padding: '1rem 2rem',
+                padding: 'clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 4vw, 2rem)',
                 borderRadius: '12px',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.9rem, 3vw, 1rem)',
                 cursor: 'pointer',
-                marginTop: '2rem',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                fontWeight: '600'
               }}
               onMouseEnter={(e) => {
                 e.target.style.background = '#764ba2';
